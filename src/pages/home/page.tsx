@@ -1,4 +1,7 @@
 import { useState, useEffect, useRef } from "react";
+import faqImage from "../../assets/images/faq.png";
+import logoImage from "../../assets/images/logo.png";
+import chooseImage from "../../assets/images/why_choose_us.png";
 
 export default function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -226,11 +229,7 @@ export default function HomePage() {
       >
         <div className="max-w-7xl mx-auto px-1 py-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img
-              src="/src/assets/images/logo.png"
-              alt="SOLENO.AI Logo"
-              className="h-6 w-auto"
-            />
+            <img src={logoImage} alt="logo" className="h-6 w-auto" />
           </div>
 
           <div className="hidden md:flex items-center gap-8">
@@ -542,11 +541,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-violet-500/20 to-amber-500/20 rounded-3xl blur-2xl"></div>
-              <img
-                src="/src/assets/images/why_choose_us.png"
-                alt="AI Innovation"
-                className="relative w-full h-auto rounded-3xl"
-              />
+              <img src={chooseImage} alt="choose" />
             </div>
             <div>
               <span className="text-sm font-semibold text-amber-500 tracking-wider uppercase mb-4 block">
@@ -778,11 +773,7 @@ export default function HomePage() {
 
               {/* Illustration */}
               <div className="relative z-10 flex items-center justify-center py-8">
-                <img
-                  src="/src/assets/images/faq.png"
-                  alt="AI Illustration"
-                  className="w-full max-w-md h-auto"
-                />
+                <img src={faqImage} alt="FAQ" className="w-full h-auto max-w-sm" />
               </div>
             </div>
 
@@ -842,11 +833,7 @@ export default function HomePage() {
             {/* Column 1 - Brand */}
             <div>
               <div className="mb-5">
-                <img
-                  src="/src/assets/images/logo.png"
-                  alt="SOLENO AI Logo"
-                  className="h-5 w-auto"
-                />
+                <img src={logoImage} alt="logo" className="h-6 w-auto" />
               </div>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 Empowering businesses with intelligent AI solutions for a smarter tomorrow.

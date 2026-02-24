@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import faqImage from "../../assets/images/faq.png";
-import logoImage from "../../assets/images/logo.png";
 import chooseImage from "../../assets/images/why_choose_us.png";
+import Navbar from '../../components/feature/Navbar';
+import Footer from "../../components/feature/Footer";
 
 export default function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -219,46 +220,55 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-neutral-50 font-sans">
-      {/* Navigation */}
-      <nav
-        className="fixed top-0 left-0 right-0 z-50 
-  bg-[rgba(23,0,63,0.76)] 
-  backdrop-blur-md 
-  shadow-sm 
-  transition-all duration-300"
-      >
-        <div className="max-w-7xl mx-auto px-1 py-5 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src={logoImage} alt="logo" className="h-6 w-auto" />
-          </div>
-
-          <div className="hidden md:flex items-center gap-8">
-            {["Home", "About Us", "Services", "Blog", "Contact"].map(
-              (item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-sm text-white hover:text-[#FB923C] transition-colors cursor-pointer whitespace-nowrap"
-                >
-                  {item}
-                </a>
-              ),
-            )}
-          </div>
-        </div>
-      </nav>
+  <Navbar />
 
       {/* Hero Section */}
       <section className="relative pt-24 pb-32 px-6 overflow-hidden min-h-screen flex items-center">
-        {/* Background Image */}
+        {/* Animated Background Image with Ken Burns */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="https://static.readdy.ai/image/306c0f034255580e0c7c21250ba38e98/9f3517dc4e4027d7595b74fda7741f89.png"
-            alt="AI Background"
-            className="w-full h-full object-cover"
-          />
+          <div className="absolute inset-0 animate-[heroZoom_20s_ease-in-out_infinite_alternate]">
+            <img
+              src="https://static.readdy.ai/image/306c0f034255580e0c7c21250ba38e98/9f3517dc4e4027d7595b74fda7741f89.png"
+              alt="AI Background"
+              className="w-full h-full object-cover scale-110"
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-b from-violet-900/60 via-purple-900/50 to-neutral-900/70"></div>
         </div>
+
+        {/* Animated Floating Gradient Orbs */}
+        <div className="absolute inset-0 z-[1] overflow-hidden pointer-events-none">
+          <div className="absolute top-[10%] left-[5%] w-80 h-80 bg-violet-500/20 rounded-full blur-[100px] animate-[floatOrb1_8s_ease-in-out_infinite]"></div>
+          <div className="absolute bottom-[15%] right-[10%] w-96 h-96 bg-amber-400/15 rounded-full blur-[120px] animate-[floatOrb2_10s_ease-in-out_infinite]"></div>
+          <div className="absolute top-[40%] right-[30%] w-64 h-64 bg-purple-400/15 rounded-full blur-[80px] animate-[floatOrb3_12s_ease-in-out_infinite]"></div>
+        </div>
+
+        {/* Animated Particle Dots */}
+        <div className="absolute inset-0 z-[1] overflow-hidden pointer-events-none">
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1.5 h-1.5 bg-white/30 rounded-full"
+              style={{
+                left: `${8 + (i * 7.5) % 85}%`,
+                top: `${10 + (i * 13) % 75}%`,
+                animation: `particleFloat ${3 + (i % 4)}s ease-in-out ${i * 0.4}s infinite alternate`,
+              }}
+            ></div>
+          ))}
+        </div>
+
+        {/* Animated Grid Lines */}
+        <div className="absolute inset-0 z-[1] pointer-events-none opacity-[0.04]">
+          <div
+            className="absolute inset-0 animate-[gridShift_15s_linear_infinite]"
+            style={{
+              backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
+              backgroundSize: '60px 60px',
+            }}
+          ></div>
+        </div>
+        
 
         <div className="max-w-7xl mx-auto relative z-10 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -824,97 +834,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-black pt-20 pb-8 px-6">
-        <div className="max-w-7xl mx-auto">
-          {/* Footer Content Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12 pb-12 border-b border-neutral-800">
-            {/* Column 1 - Brand */}
-            <div>
-              <div className="mb-5">
-                <img src={logoImage} alt="logo" className="h-6 w-auto" />
-              </div>
-              <p className="text-neutral-400 text-sm leading-relaxed">
-                Empowering businesses with intelligent AI solutions for a smarter tomorrow.
-              </p>
-            </div>
-
-            {/* Column 2 - Quick Links */}
-            <div>
-              <h4 className="text-base font-semibold text-white mb-5">
-                Quick Links
-              </h4>
-              <div className="space-y-3">
-                {["Home","About Us", "Services", "Blog", "Contact"].map((link, i) => (
-                  <a
-                    key={i}
-                    href="#"
-                    className="block text-sm text-neutral-400 hover:text-orange-400 transition-colors cursor-pointer"
-                  >
-                    {link}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Column 3 - Services */}
-            <div>
-              <h4 className="text-base font-semibold text-white mb-5">
-                Services
-              </h4>
-              <div className="space-y-3">
-                {[
-                  "AI-Powered Automation",
-                  "Intelligent Analytics & Insights",
-                  "Custom AI Solutions",
-                  "AI Integration & Support",
-                  "Chatbots & Virtual Assistants",
-                ].map((service, i) => (
-                  <a
-                    key={i}
-                    href="#"
-                    className="block text-sm text-neutral-400 hover:text-orange-400 transition-colors cursor-pointer"
-                  >
-                    {service}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Column 4 - Follow Us */}
-            <div>
-              <h4 className="text-base font-semibold text-white mb-5">
-                Follow Us
-              </h4>
-              <div className="flex gap-3">
-                {[
-                  { icon: "ri-linkedin-fill", label: "LinkedIn" },
-                  { icon: "ri-twitter-x-line", label: "Twitter" },
-                  { icon: "ri-facebook-fill", label: "Facebook" },
-                  { icon: "ri-instagram-line", label: "Instagram" },
-                ].map((social, i) => (
-                  <a
-                    key={i}
-                    href="#"
-                    aria-label={social.label}
-                    className="w-10 h-10 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 flex items-center justify-center text-white hover:from-orange-400 hover:to-amber-400 transition-all cursor-pointer"
-                  >
-                    <i className={social.icon}></i>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Footer Bottom */}
-          <div className="text-center">
-            <p className="text-sm text-neutral-400">
-              © 2026 SOLENO.AI. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

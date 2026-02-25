@@ -69,7 +69,7 @@ export default function HomePage() {
     return () => observer.disconnect();
   }, []);
 
-  
+
 
   const services = [
     {
@@ -186,7 +186,7 @@ export default function HomePage() {
     },
   ];
 
-   const wcuParticles = Array.from({ length: 14 }, (_, i) => ({
+  const wcuParticles = Array.from({ length: 14 }, (_, i) => ({
     id: i,
     left: `${10 + (i * 6.5) % 80}%`,
     top: `${12 + (i * 8.1) % 76}%`,
@@ -199,13 +199,13 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-neutral-50 font-sans">
-  <Navbar />
+      <Navbar />
 
       {/* Hero Section */}
       <section className="relative pt-24 pb-32 px-6 overflow-hidden min-h-screen flex items-center">
         {/* Animated Background Image with Ken Burns */}
         <div className="absolute inset-0 z-0 ">
-          <div className="absolute inset-0 animate-[heroZoom_20s_ease-in-out_infinite_alternate]">
+          <div className="absolute inset-0 animate-heroZoom">
             <img
               src="https://static.readdy.ai/image/306c0f034255580e0c7c21250ba38e98/9f3517dc4e4027d7595b74fda7741f89.png"
               alt="AI Background"
@@ -217,9 +217,9 @@ export default function HomePage() {
 
         {/* Animated Floating Gradient Orbs */}
         <div className="absolute inset-0 z-[1] overflow-hidden pointer-events-none">
-          <div className="absolute top-[10%] left-[5%] w-80 h-80 bg-violet-500/20 rounded-full blur-[100px] animate-[floatOrb1_8s_ease-in-out_infinite]"></div>
-          <div className="absolute bottom-[15%] right-[10%] w-96 h-96 bg-amber-400/15 rounded-full blur-[120px] animate-[floatOrb2_10s_ease-in-out_infinite]"></div>
-          <div className="absolute top-[40%] right-[30%] w-64 h-64 bg-purple-400/15 rounded-full blur-[80px] animate-[floatOrb3_12s_ease-in-out_infinite]"></div>
+          <div className="absolute top-[10%] left-[5%] w-80 h-80 bg-violet-500/20 rounded-full blur-[100px] animate-floatOrb1"></div>
+          <div className="absolute bottom-[15%] right-[10%] w-96 h-96 bg-amber-400/15 rounded-full blur-[120px] animate-floatOrb2"></div>
+          <div className="absolute top-[40%] right-[30%] w-64 h-64 bg-purple-400/15 rounded-full blur-[80px] animate-floatOrb3"></div>
         </div>
 
         {/* Animated Particle Dots */}
@@ -240,14 +240,14 @@ export default function HomePage() {
         {/* Animated Grid Lines */}
         <div className="absolute inset-0 z-[1] pointer-events-none opacity-[0.04]">
           <div
-            className="absolute inset-0 animate-[gridShift_15s_linear_infinite]"
+            className="absolute inset-0 animate-gridShift"
             style={{
               backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
               backgroundSize: '60px 60px',
             }}
           ></div>
         </div>
-        
+
 
         <div className="max-w-7xl mx-auto relative z-10 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -407,7 +407,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          
+
         </div>
       </section>
 
@@ -524,7 +524,7 @@ export default function HomePage() {
         </div>
       </section>
 
-       {/* Why Choose Us Section */}
+      {/* Why Choose Us Section */}
       <section ref={whyRef} className="py-24 px-6 bg-white relative overflow-hidden">
         {/* Subtle background decoration */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -740,7 +740,7 @@ export default function HomePage() {
               PROCESS
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-neutral-900">
-              How does  
+              How does
               <span className="bg-gradient-to-r from-violet-600 via-purple-600 to-amber-500 bg-clip-text text-transparent"> SOLENO AI </span>
               work?
             </h2>
@@ -852,7 +852,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      
+
 
       {/* FAQ Section */}
       <section id="faq" className="py-24 px-6 bg-white">
@@ -863,7 +863,7 @@ export default function HomePage() {
               {/* Background Decorative Elements */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-amber-400/20 rounded-full blur-3xl"></div>
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-violet-400/20 rounded-full blur-3xl"></div>
-              
+
               {/* Email Section */}
               <div className="relative z-10">
                 <div className="w-14 h-14 rounded-full bg-neutral-900 flex items-center justify-center mb-6">

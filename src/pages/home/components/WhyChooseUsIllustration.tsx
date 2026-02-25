@@ -23,7 +23,7 @@ export default function WhyChooseUsIllustration({ isVisible }: WhyChooseUsIllust
       {/* Main container with slow camera drift */}
       <div
         className="relative rounded-3xl overflow-hidden shadow-2xl shadow-violet-500/10 border border-violet-100"
-        style={{ animation: isVisible ? 'wcuCameraDrift 28s ease-in-out infinite' : 'none' }}
+        style={{ animation: 'wcuCameraDrift 28s ease-in-out infinite'  }}
       >
         {/* Main illustration image */}
         <img
@@ -41,7 +41,7 @@ export default function WhyChooseUsIllustration({ isVisible }: WhyChooseUsIllust
         {/* Panel activation overlays - top-left panel */}
         <div
           className="absolute top-[16%] left-[10%] w-[30%] h-[18%] rounded-lg pointer-events-none"
-          style={{ animation: isVisible ? 'wcuPanelActivate1 10s ease-in-out infinite' : 'none' }}
+          style={{ animation: 'wcuCameraDrift 28s ease-in-out infinite'  }}
         >
           <div className="absolute inset-0 bg-white/5 rounded-lg border border-white/8"></div>
           {/* Graphs updating steadily */}
@@ -67,7 +67,7 @@ export default function WhyChooseUsIllustration({ isVisible }: WhyChooseUsIllust
         {/* Center-right main panel */}
         <div
           className="absolute top-[13%] right-[6%] w-[34%] h-[22%] rounded-lg pointer-events-none"
-          style={{ animation: isVisible ? 'wcuPanelActivate2 12s ease-in-out 1s infinite' : 'none' }}
+          style={{ animation: 'wcuCameraDrift 28s ease-in-out infinite'  }}
         >
           <div className="absolute inset-0 bg-white/5 rounded-lg border border-white/8"></div>
           {/* Data bars adjusting */}
@@ -92,7 +92,7 @@ export default function WhyChooseUsIllustration({ isVisible }: WhyChooseUsIllust
         {/* Bottom-left panel */}
         <div
           className="absolute bottom-[30%] left-[6%] w-[28%] h-[16%] rounded-lg pointer-events-none"
-          style={{ animation: isVisible ? 'wcuPanelActivate3 11s ease-in-out 2s infinite' : 'none' }}
+          style={{ animation: 'wcuCameraDrift 28s ease-in-out infinite'  }}
         >
           <div className="absolute inset-0 bg-white/5 rounded-lg border border-white/8"></div>
           <div className="absolute bottom-[18%] left-[15%] flex items-end gap-[2px] h-[30%]">
@@ -112,7 +112,7 @@ export default function WhyChooseUsIllustration({ isVisible }: WhyChooseUsIllust
         {/* Bottom-center panel */}
         <div
           className="absolute bottom-[28%] left-[28%] w-[26%] h-[15%] rounded-lg pointer-events-none"
-          style={{ animation: isVisible ? 'wcuPanelActivate1 13s ease-in-out 3s infinite' : 'none' }}
+          style={{ animation: 'wcuCameraDrift 28s ease-in-out infinite'  }}
         >
           <div className="absolute inset-0 bg-white/5 rounded-lg border border-white/8"></div>
           <div
@@ -152,7 +152,7 @@ export default function WhyChooseUsIllustration({ isVisible }: WhyChooseUsIllust
         {/* Character precise hand movement overlay */}
         <div
           className="absolute bottom-[3%] right-[8%] w-[48%] h-[50%] pointer-events-none"
-          style={{ animation: isVisible ? 'wcuHandPrecise 8s ease-in-out infinite' : 'none' }}
+          style={{ animation: 'wcuCameraDrift 28s ease-in-out infinite'  }}
         ></div>
 
         {/* Gradient overlay at bottom */}

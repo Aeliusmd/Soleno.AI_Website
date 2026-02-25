@@ -5,6 +5,18 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      animation: {
+    wcuCameraDrift: "wcuCameraDrift 28s ease-in-out infinite",
+  },
+  keyframes: {
+    wcuCameraDrift: {
+      "0%": { transform: "scale(1.01) translate(0, 0)" },
+      "25%": { transform: "scale(1.03) translate(0.3%, -0.2%)" },
+      "50%": { transform: "scale(1.02) translate(-0.2%, 0.3%)" },
+      "75%": { transform: "scale(1.04) translate(0.2%, 0.1%)" },
+      "100%": { transform: "scale(1.01) translate(0, 0)" },
+    },
+  },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },

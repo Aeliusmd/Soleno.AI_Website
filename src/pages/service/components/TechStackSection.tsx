@@ -54,7 +54,7 @@ export default function TechStackSection() {
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 leading-tight mb-6">
               Built on
-              <span className="block bg-gradient-to-r from-violet-600 via-purple-600 to-amber-500 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-violet-600 via-amber-400 to-amber-600 bg-clip-text text-transparent">
                 Cutting-Edge Tech
               </span>
             </h2>

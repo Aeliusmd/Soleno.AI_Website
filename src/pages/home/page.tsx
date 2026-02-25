@@ -202,7 +202,7 @@ export default function HomePage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-32 px-6 overflow-hidden min-h-screen flex items-center">
+      <section id="home" className="relative pt-24 pb-32 px-6 overflow-hidden min-h-screen flex items-center">
         {/* Animated Background Image with Ken Burns */}
         <div className="absolute inset-0 z-0 ">
           <div className="absolute inset-0 animate-heroZoom">
@@ -413,7 +413,6 @@ export default function HomePage() {
 
       {/* Services Section */}
       <section
-        id="services"
         ref={servicesRef}
         className="py-24 px-6 bg-gradient-to-b from-neutral-50 via-violet-50/30 to-white relative overflow-hidden"
       >
@@ -802,8 +801,8 @@ export default function HomePage() {
       </section>
 
       {/* CTA Banner */}
-      <section className="py-24 px-6 bg-neutral-900 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
+      <section id="contact" className="py-24 px-6 bg-neutral-900 relative overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-30">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-violet-600 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-500 rounded-full blur-3xl"></div>
         </div>

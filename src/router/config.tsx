@@ -5,7 +5,7 @@ import NotFound from "../pages/NotFound";
 import Home from "../pages/home/page";
 // import About from "../pages/about/page";
 import Services from "../pages/service/page";
-// import Contact from "../pages/contact/page";
+import Contact from "../pages/contact/page";
 
 const routes: RouteObject[] = [
   {
@@ -20,10 +20,10 @@ const routes: RouteObject[] = [
     path: "/services",
     element: <Services />,
   },
-  // {
-  //   path: "/contact",
-  //   element: <Contact />,
-  // },
+  {
+    path: "/contact",
+    element: <Contact />,
+  },
   {
     path: "*",
     element: <NotFound />,

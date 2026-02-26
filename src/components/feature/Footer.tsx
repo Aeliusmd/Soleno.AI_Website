@@ -1,5 +1,6 @@
 
 import logoImage from "../../assets/images/logo.png";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -25,14 +26,20 @@ export default function Footer() {
               Quick Links
             </h4>
             <div className="space-y-3">
-              {["Home","About Us", "Services", "Blog", "Contact"].map((link, i) => (
-                <a
+              {[
+                { name: "Home", href: "/#home" },
+                { name: "About Us", href: "/#about" },
+                { name: "Services", href: "/services" },
+                { name: "Blog", href: "#" },
+                { name: "Contact", href: "/contact" }
+              ].map((link, i) => (
+                <Link
                   key={i}
-                  href="#"
+                  to={link.href}
                   className="block text-sm text-neutral-400 hover:text-orange-400 transition-colors cursor-pointer"
                 >
-                  {link}
-                </a>
+                  {link.name}
+                </Link>
               ))}
             </div>
           </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import faqImage from "../../assets/images/faq.png";
 import Navbar from '../../components/feature/Navbar';
 import Footer from "../../components/feature/Footer";
@@ -266,19 +267,19 @@ export default function HomePage() {
                 artificial intelligence technology.
               </p>
               <div className="flex gap-4 mb-12">
-                <a
-                  href="#contact"
+                <Link
+                  to="/contact"
                   className="inline-flex items-center justify-center px-8 py-3.5 bg-gradient-to-r from-[#FB923C] to-[#FCD34D] text-white text-sm font-semibold rounded-full hover:from-orange-500 hover:to-amber-400 transition-all cursor-pointer whitespace-nowrap shadow-lg shadow-orange-400/30"
                 >
                   Launch Project
-                </a>
+                </Link>
 
-                <a
-                  href="#services"
+                <Link
+                  to="/services"
                   className="px-8 py-3.5 border-2 border-white text-white text-sm font-semibold rounded-full hover:bg-white hover:text-neutral-900 transition-all cursor-pointer whitespace-nowrap"
                 >
                   Explore AI
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -390,19 +391,19 @@ export default function HomePage() {
               </div>
 
               <div className="flex items-center gap-4">
-                <a
-                  href="#contact"
+                <Link
+                  to="/contact"
                   className="px-8 py-4 bg-gradient-to-r from-violet-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:from-violet-500 hover:to-purple-500 transition-all cursor-pointer whitespace-nowrap shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:scale-105"
                 >
                   Start Your Journey
-                </a>
-                <a
-                  href="#services"
+                </Link>
+                <Link
+                  to="/services"
                   className="flex items-center gap-2 text-violet-600 hover:text-amber-500 transition-colors cursor-pointer group"
                 >
                   <span className="text-sm font-medium">Explore Services</span>
                   <i className="ri-arrow-right-line group-hover:translate-x-2 transition-transform"></i>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -512,12 +513,12 @@ export default function HomePage() {
               <span className="text-sm text-neutral-600 pl-4">
                 Need a custom solution?
               </span>
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:from-violet-500 hover:to-purple-500 transition-all cursor-pointer whitespace-nowrap shadow-lg shadow-violet-500/25"
               >
                 Contact Us
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -801,7 +802,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Banner */}
-      <section id="contact" className="py-24 px-6 bg-neutral-900 relative overflow-hidden">
+      <section className="py-24 px-6 bg-neutral-900 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-30">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-violet-600 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-500 rounded-full blur-3xl"></div>
@@ -822,12 +823,12 @@ export default function HomePage() {
             extraordinary together.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="px-8 py-3.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:from-violet-500 hover:to-purple-500 transition-all cursor-pointer whitespace-nowrap shadow-lg shadow-violet-500/30"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
           <div className="flex justify-center items-center gap-6 mt-8">
             <span className="text-neutral-400 text-sm">Follow Us :</span>

@@ -7,7 +7,7 @@ const navItems = [
   { name: 'Home', href: '/#home' },
   { name: 'About Us', href: '/#about' },
   { name: 'Services', href: '/services' },
-  { name: 'Contact', href: '/#contact' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import faqImage from "../../assets/images/faq.png";
 import Navbar from '../../components/feature/Navbar';
 import Footer from "../../components/feature/Footer";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -12,6 +13,15 @@ export default function HomePage() {
   const [aboutVisible, setAboutVisible] = useState(false);
   const [whyVisible, setWhyVisible] = useState(false);
   const whyRef = useRef<HTMLDivElement>(null);
+  const steps = [
+    { number: "01", title: "Discover Your Needs", description: "We identify your goals and challenges" },
+    { number: "02", title: "Analyze & Plan", description: "We design a tailored AI approach" },
+    { number: "03", title: "Build Smart AI Solutions", description: "We create smart, efficient AI tools" },
+    { number: "04", title: "Integrate & Launch", description: "We connect AI with your systems" },
+    { number: "05", title: "Optimize & Support", description: "We improve and support continuously" },
+  ];
+
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -253,35 +263,62 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto relative z-10 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
-            <div className="text-left">
-              <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6 tracking-tight">
-                BUILD THE FUTURE WITH
-                <br />
-                <span className="bg-gradient-to-r from-[#FB923C] to-[#FCD34D] bg-clip-text text-transparent">
-                  INTELLIGENT TECH
-                </span>
-              </h1>
-              <p className="text-base md:text-lg lg:text-xl text-white/90 max-w-xl mb-10 leading-relaxed">
-                SOLENO AI blends creativity and intelligence to bring your
-                boldest ideas to life through responsible, cutting-edge
-                artificial intelligence technology.
-              </p>
-              <div className="flex gap-4 mb-12">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-3.5 bg-gradient-to-r from-[#FB923C] to-[#FCD34D] text-white text-sm font-semibold rounded-full hover:from-orange-500 hover:to-amber-400 transition-all cursor-pointer whitespace-nowrap shadow-lg shadow-orange-400/30"
-                >
-                  Launch Project
-                </Link>
+            <motion.div 
+  initial={{ opacity: 0, x: -30 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+  className="text-left"
+>
+  {/* Main Headline with staggered reveal */}
+  <motion.h1 
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.2, duration: 0.8 }}
+    className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6 tracking-tight"
+  >
+    BUILD THE FUTURE WITH
+    <br />
+    <span className="bg-gradient-to-r from-[#FB923C] to-[#FCD34D] bg-clip-text text-transparent">
+      INTELLIGENT TECH
+    </span>
+  </motion.h1>
 
-                <Link
-                  to="/services"
-                  className="px-8 py-3.5 border-2 border-white text-white text-sm font-semibold rounded-full hover:bg-white hover:text-neutral-900 transition-all cursor-pointer whitespace-nowrap"
-                >
-                  Explore AI
-                </Link>
-              </div>
-            </div>
+  {/* Description with fade-in */}
+  <motion.p 
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.5, duration: 0.8 }}
+    className="text-base md:text-lg lg:text-xl text-white/90 max-w-xl mb-10 leading-relaxed"
+  >
+    SOLENO AI blends creativity and intelligence to bring your
+    boldest ideas to life through responsible, cutting-edge
+    artificial intelligence technology.
+  </motion.p>
+
+  {/* Interactive Buttons with hover scaling and shimmer */}
+  <motion.div 
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.8, duration: 0.5 }}
+    className="flex gap-4 mb-12"
+  >
+    <Link
+      to="/contact"
+      className="group relative overflow-hidden inline-flex items-center justify-center px-8 py-3.5 bg-gradient-to-r from-[#FB923C] to-[#FCD34D] text-white text-sm font-semibold rounded-full hover:shadow-orange-500/50 transition-all cursor-pointer whitespace-nowrap shadow-lg shadow-orange-400/30"
+    >
+      {/* Visual shimmer effect on hover */}
+      <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+      Launch Project
+    </Link>
+
+    <Link
+      to="/services"
+      className="px-8 py-3.5 border-2 border-white/30 text-white text-sm font-semibold rounded-full hover:bg-white hover:text-neutral-900 hover:border-white transition-all cursor-pointer whitespace-nowrap"
+    >
+      Explore AI
+    </Link>
+  </motion.div>
+</motion.div>
 
             {/* Right Side - AI Figure Placeholder */}
             <div className="hidden lg:block">
@@ -733,73 +770,67 @@ export default function HomePage() {
       </section>
 
       {/* Process Section */}
-      <section className="py-24 px-6 bg-gradient-to-br from-violet-50/50 via-purple-50/30 to-neutral-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <span className="text-sm font-semibold text-amber-500 tracking-widest uppercase mb-4 block">
-              PROCESS
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-neutral-900">
-              How does
-              <span className="bg-gradient-to-r from-violet-600 via-purple-600 to-amber-500 bg-clip-text text-transparent"> SOLENO AI </span>
-              work?
-            </h2>
-          </div>
+      <section className="py-24 px-6 bg-gradient-to-br from-violet-50/50 via-purple-50/30 to-neutral-50 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <span className="text-sm font-semibold text-amber-500 tracking-widest uppercase mb-4 block">
+            PROCESS
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-neutral-900">
+            How does
+            <span className="bg-gradient-to-r from-violet-600 via-purple-600 to-amber-500 bg-clip-text text-transparent"> SOLENO AI </span>
+            work?
+          </h2>
+        </div>
 
-          <div className="relative">
-            {/* Connection Line */}
-            <div className="absolute top-16 left-0 right-0 h-0.5 bg-gradient-to-r from-violet-300 via-violet-400 to-violet-300 hidden lg:block"></div>
+        <div className="relative">
+          {/* Animated Connection Line */}
+          <motion.div 
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            viewport={{ once: true }}
+            className="absolute top-16 left-0 right-0 h-0.5 bg-gradient-to-r from-violet-300 via-violet-400 to-violet-300 hidden lg:block origin-left"
+          />
 
-            {/* Steps Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4">
-              {[
-                {
-                  number: "01",
-                  title: "Discover Your Needs",
-                  description: "We identify your goals and challenges",
-                },
-                {
-                  number: "02",
-                  title: "Analyze & Plan",
-                  description: "We design a tailored AI approach",
-                },
-                {
-                  number: "03",
-                  title: "Build Smart AI Solutions",
-                  description: "We create smart, efficient AI tools",
-                },
-                {
-                  number: "04",
-                  title: "Integrate & Launch",
-                  description: "We connect AI with your systems",
-                },
-                {
-                  number: "05",
-                  title: "Optimize & Support",
-                  description: "We improve and support continuously",
-                },
-              ].map((step, index) => (
-                <div key={index} className="flex flex-col items-center text-center relative">
-                  {/* Circle Badge */}
-                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-violet-600 to-purple-600 flex items-center justify-center shadow-xl shadow-violet-500/30 mb-6 relative z-10">
-                    <span className="text-3xl font-bold text-white">
-                      {step.number}
-                    </span>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4">
+            {steps.map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                // This creates the "one by one" effect within your 5s window
+                transition={{ 
+                  duration: 0.8, 
+                  delay: index * 0.6, // Staggers the start of each step
+                  ease: "easeOut" 
+                }}
+                viewport={{ once: true }}
+                className="flex flex-col items-center text-center relative"
+              >
+                {/* Circle Badge */}
+                <motion.div 
+                  whileHover={{ scale: 1.1 }}
+                  className="w-32 h-32 rounded-full bg-gradient-to-br from-violet-600 to-purple-600 flex items-center justify-center shadow-xl shadow-violet-500/30 mb-6 relative z-10"
+                >
+                  <span className="text-3xl font-bold text-white">
+                    {step.number}
+                  </span>
+                </motion.div>
 
-                  {/* Content */}
-                  <h3 className="text-lg font-bold text-violet-600 mb-3 px-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-neutral-600 leading-relaxed px-4">
-                    {step.description}
-                  </p>
-                </div>
-              ))}
-            </div>
+                {/* Content */}
+                <h3 className="text-lg font-bold text-violet-600 mb-3 px-2">
+                  {step.title}
+                </h3>
+                <p className="text-sm text-neutral-600 leading-relaxed px-4">
+                  {step.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* CTA Banner */}
       <section className="py-24 px-6 bg-neutral-900 relative overflow-hidden">
@@ -855,81 +886,123 @@ export default function HomePage() {
 
 
       {/* FAQ Section */}
-      <section id="faq" className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            {/* Left Side - Contact Card with Illustration */}
-            <div className="bg-gradient-to-br from-violet-600 via-purple-600 to-violet-700 rounded-3xl p-10 relative overflow-hidden min-h-[600px] flex flex-col justify-between">
-              {/* Background Decorative Elements */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-amber-400/20 rounded-full blur-3xl"></div>
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-violet-400/20 rounded-full blur-3xl"></div>
+      <section id="faq" className="py-24 px-6 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          
+          {/* Left Side - Animated Contact Card */}
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-violet-600 via-purple-600 to-violet-700 rounded-3xl p-10 relative overflow-hidden min-h-[600px] flex flex-col justify-between shadow-2xl"
+          >
+            {/* Pulsing Background Orbs */}
+            <motion.div 
+              animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.3, 0.2] }}
+              transition={{ duration: 8, repeat: Infinity }}
+              className="absolute top-0 right-0 w-64 h-64 bg-amber-400/20 rounded-full blur-3xl"
+            />
+            <motion.div 
+              animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
+              transition={{ duration: 10, repeat: Infinity, delay: 1 }}
+              className="absolute bottom-0 left-0 w-64 h-64 bg-violet-400/20 rounded-full blur-3xl"
+            />
 
-              {/* Email Section */}
-              <div className="relative z-10">
-                <div className="w-14 h-14 rounded-full bg-neutral-900 flex items-center justify-center mb-6">
-                  <i className="ri-mail-line text-2xl text-amber-400"></i>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  contact@soleno.ai
-                </h3>
-                <p className="text-white/80 text-sm">
-                  Have questions? Reach out to us directly.
-                </p>
-              </div>
-
-              {/* Illustration */}
-              <div className="relative z-10 flex items-center justify-center py-8">
-                <img src={faqImage} alt="FAQ" className="w-full h-auto max-w-sm" />
-              </div>
+            {/* Email Section */}
+            <div className="relative z-10">
+              <motion.div 
+                whileHover={{ rotate: 15, scale: 1.1 }}
+                className="w-14 h-14 rounded-full bg-neutral-900 flex items-center justify-center mb-6"
+              >
+                <i className="ri-mail-line text-2xl text-amber-400"></i>
+              </motion.div>
+              <h3 className="text-2xl font-bold text-white mb-2">contact@soleno.ai</h3>
+              <p className="text-white/80 text-sm">Have questions? Reach out to us directly.</p>
             </div>
 
-            {/* Right Side - FAQ Accordion */}
-            <div>
-              <span className="text-sm font-semibold text-orange-500 tracking-wider uppercase mb-4 block">
-                FAQs
-              </span>
-              <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-10 leading-tight">
-                Everything You Want to
-                <br />
-                Know <span className="bg-gradient-to-r from-violet-600 via-purple-600 to-amber-500 bg-clip-text text-transparent">About AI</span>
-              </h2>
-              <div className="space-y-4">
-                {faqs.map((faq, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-xl border border-neutral-200 overflow-hidden hover:border-neutral-300 transition-colors"
+            {/* Floating Illustration */}
+            <motion.div 
+              animate={{ y: [0, -20, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="relative z-10 flex items-center justify-center py-8"
+            >
+              <img src={faqImage} alt="FAQ" className="w-full h-auto max-w-sm drop-shadow-2xl" />
+            </motion.div>
+          </motion.div>
+
+          {/* Right Side - FAQ Accordion */}
+          <div>
+            <motion.span 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              className="text-sm font-semibold text-orange-500 tracking-wider uppercase mb-4 block"
+            >
+              FAQs
+            </motion.span>
+            
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-4xl md:text-5xl font-bold text-neutral-900 mb-10 leading-tight"
+            >
+              Everything You Want to <br />
+              Know <span className="bg-gradient-to-r from-violet-600 via-purple-600 to-amber-500 bg-clip-text text-transparent">About AI</span>
+            </motion.h2>
+
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-white rounded-xl border border-neutral-200 overflow-hidden hover:border-violet-300 transition-colors"
+                >
+                  <button
+                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-neutral-50 transition-colors cursor-pointer"
                   >
-                    <button
-                      onClick={() =>
-                        setOpenFaq(openFaq === index ? null : index)
-                      }
-                      className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-neutral-50 transition-colors cursor-pointer"
+                    <span className="text-sm font-medium text-neutral-900 pr-4">{faq.question}</span>
+                    <motion.div
+                      animate={{ 
+                        rotate: openFaq === index ? 180 : 0,
+                        backgroundColor: openFaq === index ? "#7c3aed" : "#e5e5e5" 
+                      }}
+                      className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all"
                     >
-                      <span className="text-sm font-medium text-neutral-900 pr-4">
-                        {faq.question}
-                      </span>
-                      <div
-                        className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${openFaq === index ? "bg-violet-600" : "bg-neutral-200"}`}
-                      >
-                        <i
-                          className={`${openFaq === index ? "ri-subtract-line" : "ri-add-line"} ${openFaq === index ? "text-white" : "text-neutral-700"}`}
-                        ></i>
-                      </div>
-                    </button>
+                      <i className={`${openFaq === index ? "ri-subtract-line text-white" : "ri-add-line text-neutral-700"}`}></i>
+                    </motion.div>
+                  </button>
+
+                  {/* Smooth Accordion Content */}
+                  <AnimatePresence>
                     {openFaq === index && (
-                      <div className="px-6 pb-5">
-                        <p className="text-sm text-neutral-600 leading-relaxed">
-                          {faq.answer}
-                        </p>
-                      </div>
+                      <motion.div 
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                      >
+                        <div className="px-6 pb-5">
+                          <p className="text-sm text-neutral-600 leading-relaxed">
+                            {faq.answer}
+                          </p>
+                        </div>
+                      </motion.div>
                     )}
-                  </div>
-                ))}
-              </div>
+                  </AnimatePresence>
+                </motion.div>
+              ))}
             </div>
           </div>
+
         </div>
-      </section>
+      </div>
+    </section>
       <Footer />
     </div>
   );

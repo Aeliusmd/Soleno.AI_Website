@@ -15,7 +15,7 @@ const contactInfo = [
     title: 'Contact Info',
     description: 'Open a chat or give us call at',
     link: { text: '(626)788-0488', href: 'tel:6267880488' },
-    gradient: 'from-amber-400 to-orange-5',
+    gradient: 'from-amber-400 to-orange-500',
     bgGradient: 'from-amber-50 to-orange-50',
   },
   {

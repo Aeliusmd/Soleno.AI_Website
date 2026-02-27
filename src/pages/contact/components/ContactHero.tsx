@@ -1,11 +1,21 @@
-
-import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
+import contactHero from '../../../assets/images/contact_hero.png';
 
 export default function ContactHero() {
   return (
     <section className="relative pt-32 pb-28 px-6 overflow-hidden min-h-[560px] flex items-center">
+      {/* 1. Ambient Background - Subtle Infinite Drift */}
       <div className="absolute inset-0 z-0">
-        <img
+        <motion.img
+          initial={{ opacity: 0 }}
+          animate={{ 
+            opacity: 1,
+            scale: [1, 1.05, 1], // Constant slow breathing effect
+          }}
+          transition={{ 
+            opacity: { duration: 1, ease: "easeOut" },
+            scale: { duration: 2000000, repeat: Infinity, ease: "linear" } 
+          }}
           src="https://readdy.ai/api/search-image?query=abstract%20futuristic%20technology%20background%20with%20flowing%20purple%20violet%20and%20gold%20energy%20waves%20geometric%20neural%20network%20patterns%20dark%20space%20atmosphere%20with%20glowing%20particles%20and%20light%20streaks%20modern%20digital%20art%20wide%20panoramic%20composition&width=1600&height=600&seq=contacthero001&orientation=landscape"
           alt="Contact Background"
           className="w-full h-full object-cover object-top"
@@ -15,52 +25,93 @@ export default function ContactHero() {
 
       <div className="max-w-7xl mx-auto relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="flex items-center gap-2 mb-6">
-              <Link to="/" className="text-sm text-white/60 hover:text-white transition-colors cursor-pointer">Home</Link>
-              <i className="ri-arrow-right-s-line text-white/40"></i>
-              <span className="text-sm text-amber-400 font-medium">Contact</span>
-            </div>
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-violet-200 text-sm font-semibold tracking-wider uppercase mb-6 border border-white/20">
-              <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></span>
-              Get In Touch
-            </span>
-            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6 tracking-tight">
+          
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6 tracking-tight"
+            >
               Contact
               <br />
               <span className="bg-gradient-to-r from-violet-300 via-purple-300 to-amber-300 bg-clip-text text-transparent">
                 Us
               </span>
-            </h1>
-            <p className="text-lg text-white/80 max-w-xl mb-10 leading-relaxed">
+            </motion.h1>
+
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="text-lg text-white/80 max-w-xl mb-10 leading-relaxed"
+            >
               Have a question or ready to start your AI journey? Reach out to our team and let&apos;s discuss how we can transform your business together.
-            </p>
-            <div className="flex gap-4">
-              <a
+            </motion.p>
+
+            {/* 2. Interactive & Ambient Buttons */}
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+              className="flex gap-4"
+            >
+              <motion.a
                 href="#contact-form"
-                className="px-8 py-3.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white text-sm font-semibold rounded-full hover:from-violet-500 hover:to-purple-500 transition-all cursor-pointer whitespace-nowrap shadow-lg shadow-violet-500/30"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative overflow-hidden px-8 py-3.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white text-sm font-bold rounded-full shadow-lg shadow-violet-500/30 transition-all cursor-pointer whitespace-nowrap"
               >
+                {/* Infinite Shimmer - Runs every 4 seconds automatically */}
+                <motion.span 
+                  animate={{ x: ['-100%', '200%'] }}
+                  transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 0.5 }}
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                />
                 Send a Message
-              </a>
-              <a
+              </motion.a>
+
+              <motion.a
                 href="#book-call"
-                className="px-8 py-3.5 border-2 border-white text-white text-sm font-semibold rounded-full hover:bg-white hover:text-neutral-900 transition-all cursor-pointer whitespace-nowrap"
+                whileHover={{ backgroundColor: "rgba(255, 255, 255, 0.1)", scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-3.5 border-2 border-white/30 text-white text-sm font-bold rounded-full transition-all cursor-pointer whitespace-nowrap"
               >
                 Book a Call
-              </a>
-            </div>
-          </div>
+              </motion.a>
+            </motion.div>
+          </motion.div>
 
+          {/* Right Side - Ambient Illustration Glow */}
           <div className="hidden lg:flex justify-center">
             <div className="relative">
-              <div className="absolute -inset-8 bg-gradient-to-r from-violet-500/20 to-amber-500/20 rounded-full blur-3xl"></div>
+              {/* 3. Infinite Breathing Glow */}
+              <motion.div 
+                animate={{ 
+                  opacity: [0.3, 0.6, 0.3],
+                  scale: [1, 1.3, 1] 
+                }}
+                transition={{ 
+                  duration: 5, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                className="absolute -inset-10 bg-gradient-to-r from-violet-500/40 to-amber-500/40 rounded-full blur-[80px]"
+              ></motion.div>
+              
               <img
-                src="https://readdy.ai/api/search-image?query=flat%20vector%20illustration%20style%20futuristic%20contact%20communication%20concept%20with%20envelope%20chat%20bubbles%20connected%20nodes%20and%20data%20streams%20purple%20violet%20and%20gold%20color%20palette%20minimalist%20design%20clean%20geometric%20shapes%20holographic%20interface%20elements%20simple%20light%20glow%20background%20modern%20digital%20art%20illustration&width=500&height=450&seq=contactheroimg001&orientation=landscape"
+                src={contactHero}
                 alt="Contact Illustration"
-                className="relative w-[500px] h-[450px] object-contain"
+                className="relative w-[500px] h-[450px] object-contain drop-shadow-[0_0_30px_rgba(139,92,246,0.3)]"
               />
             </div>
           </div>
+
         </div>
       </div>
     </section>

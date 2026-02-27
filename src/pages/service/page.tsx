@@ -4,6 +4,7 @@ import Footer from '../../components/feature/Footer';
 import ServicesHero from './components/ServicesHero';
 import ServicesGrid from './components/ServicesGrid';
 import TechStackSection from './components/TechStackSection';
+import ServicesCTA from './components/ServicesCTA';
 
 export default function ServicesPage() {
   return (
@@ -12,6 +13,7 @@ export default function ServicesPage() {
       <ServicesHero />
       <ServicesGrid />
       <TechStackSection />
+      <ServicesCTA />
       <Footer />
     </div>
   );

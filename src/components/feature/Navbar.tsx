@@ -5,9 +5,9 @@ import { useEffect } from 'react';
 
 const navItems = [
   { name: 'Home', href: '/#home' },
-  { name: 'About Us', href: '/#about' },
+  { name: 'About Us', href: '/about' },
   { name: 'Services', href: '/services' },
-  { name: 'Contact', href: '/#contact' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {
@@ -36,7 +36,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-1 py-5 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Link to="/#home">
-            <img src={logoImage} alt="logo" className="h-6 w-auto" />
+            <img src={logoImage} alt="logo" className="h-14 w-auto" />
           </Link>
         </div>
 
@@ -45,7 +45,7 @@ export default function Navbar() {
             <Link
               key={item.name}
               to={item.href}
-              className="text-sm text-white hover:text-[#FB923C] transition-colors cursor-pointer whitespace-nowrap"
+              className="text-xl font-medium text-white hover:text-[#FB923C] transition-colors cursor-pointer whitespace-nowrap"
             >
               {item.name}
             </Link>

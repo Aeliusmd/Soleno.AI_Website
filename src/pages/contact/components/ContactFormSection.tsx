@@ -39,19 +39,15 @@ export default function ContactFormSection() {
     setSubmitStatus('idle');
 
     try {
-      const body = new URLSearchParams();
-      body.append('name', formData.name);
-      body.append('email', formData.email);
-      body.append('message', formData.message);
-
-      const response = await fetch(
-        'https://readdy.ai/api/form/d6dvfiaohb161tfd8p3g',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: body.toString(),
-        }
-      );
+      const response = await fetch('http://localhost:5000/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
 
       if (response.ok) {
         setSubmitStatus('success');
@@ -76,9 +72,8 @@ export default function ContactFormSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Map */}
           <div
-            className={`transition-all duration-700 ${
-              visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
-            }`}
+            className={`transition-all duration-700 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
+              }`}
           >
             <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-lg shadow-violet-500/5 h-[520px]">
               <iframe
@@ -94,9 +89,8 @@ export default function ContactFormSection() {
 
           {/* Form */}
           <div
-            className={`transition-all duration-700 delay-200 ${
-              visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
-            }`}
+            className={`transition-all duration-700 delay-200 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
+              }`}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 leading-tight mb-8">
               Send us a message, and we&apos;ll get back to you{' '}

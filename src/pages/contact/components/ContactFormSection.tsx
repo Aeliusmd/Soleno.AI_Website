@@ -1,10 +1,12 @@
 
 import { useState, useEffect, useRef } from 'react';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 export default function ContactFormSection() {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'captcha'>('idle');
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -35,10 +37,18 @@ export default function ContactFormSection() {
     if (!formData.name || !formData.email || !formData.message) return;
     if (formData.message.length > 500) return;
 
+    if (!executeRecaptcha) {
+      console.error('reCAPTCHA not ready');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
+      // Get reCAPTCHA v3 token silently
+      const recaptchaToken = await executeRecaptcha('contact_form');
+
       const response = await fetch('http://localhost:5000/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -46,6 +56,7 @@ export default function ContactFormSection() {
           name: formData.name,
           email: formData.email,
           message: formData.message,
+          recaptchaToken,
         }),
       });
 
@@ -53,7 +64,12 @@ export default function ContactFormSection() {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' });
       } else {
-        setSubmitStatus('error');
+        const data = await response.json();
+        if (data?.error?.toLowerCase().includes('recaptcha')) {
+          setSubmitStatus('captcha');
+        } else {
+          setSubmitStatus('error');
+        }
       }
     } catch (error) {
       console.error('Form submission error:', error);
@@ -176,6 +192,15 @@ export default function ContactFormSection() {
                   <i className="ri-error-warning-line text-red-500 text-lg"></i>
                   <span className="text-sm text-red-700">
                     Something went wrong. Please try again.
+                  </span>
+                </div>
+              )}
+
+              {submitStatus === 'captcha' && (
+                <div className="flex items-center gap-2 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+                  <i className="ri-shield-flash-line text-amber-500 text-lg"></i>
+                  <span className="text-sm text-amber-700">
+                    Security check failed. Please refresh the page and try again.
                   </span>
                 </div>
               )}

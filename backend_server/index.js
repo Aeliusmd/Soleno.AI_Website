@@ -1,6 +1,7 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
+const axios = require('axios');
 require('dotenv').config();
 
 const app = express();
@@ -27,12 +28,38 @@ const transporter = nodemailer.createTransport({
 
 // Contact form endpoint
 app.post('/contact', async (req, res) => {
-  const { name, email, message } = req.body;
+  const { name, email, message, recaptchaToken } = req.body;
 
   // Basic validation
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'All fields are required.' });
   }
+
+  // ── reCAPTCHA v3 verification ────────────────────────────────────────
+  if (!recaptchaToken) {
+    return res.status(400).json({ error: 'reCAPTCHA token missing.' });
+  }
+  try {
+    const verifyRes = await axios.post(
+      'https://www.google.com/recaptcha/api/siteverify',
+      null,
+      {
+        params: {
+          secret: process.env.RECAPTCHA_SECRET_KEY,
+          response: recaptchaToken,
+        },
+      }
+    );
+    const { success, score } = verifyRes.data;
+    console.log(`🤖 reCAPTCHA — success: ${success}, score: ${score}`);
+    if (!success || score < 0.5) {
+      return res.status(400).json({ error: 'reCAPTCHA failed. Possible bot detected.' });
+    }
+  } catch (err) {
+    console.error('reCAPTCHA verification error:', err.message);
+    return res.status(500).json({ error: 'Could not verify reCAPTCHA. Try again.' });
+  }
+  // ─────────────────────────────────────────────────────────────────────
 
   const mailOptions = {
     from: `"${name}" <${process.env.EMAIL_USER}>`,

@@ -1,7 +1,7 @@
-const nodemailer = require('nodemailer');
-const axios = require('axios');
+import nodemailer from 'nodemailer';
+import axios from 'axios';
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
     // ── CORS headers ──────────────────────────────────────────────────────
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -91,4 +91,4 @@ module.exports = async function handler(req, res) {
         console.error('❌ Error sending email:', error.message);
         return res.status(500).json({ error: 'Failed to send email. Please try again.' });
     }
-};
+}

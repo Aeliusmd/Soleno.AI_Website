@@ -49,7 +49,7 @@ export default function ContactFormSection() {
       // Get reCAPTCHA v3 token silently
       const recaptchaToken = await executeRecaptcha('contact_form');
 
-      const response = await fetch('http://localhost:5000/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -9,14 +9,14 @@
             "src": "package.json",
             "use": "@vercel/static-build",
             "config": {
-                "distDir": "dist"
+                "distDir": "out"
             }
         }
     ],
     "rewrites": [
         {
-            "source": "/api/(.*)",
-            "destination": "/api/$1"
+            "source": "/api/contact",
+            "destination": "/api/contact.js"
         },
         {
             "source": "/(.*)",

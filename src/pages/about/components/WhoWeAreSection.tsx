@@ -110,7 +110,7 @@ export default function WhoWeAreSection() {
             </ul>
 
             <a
-              href="#contact-cta"
+              href="/contact"
               className="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white text-sm font-semibold rounded-lg hover:from-violet-500 hover:to-purple-500 transition-all cursor-pointer whitespace-nowrap shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40"
             >
               Contact Us

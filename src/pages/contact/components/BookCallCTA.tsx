@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 export default function BookCallCTA() {
@@ -59,8 +58,8 @@ export default function BookCallCTA() {
               transition={{ delay: 0.4, duration: 0.3 }}
               viewport={{ once: true }}
             >
-              <Link
-                to="/contact"
+              <a
+                href="#contact-form"
                 className="group relative overflow-hidden px-8 py-4 bg-white text-violet-700 text-sm font-bold rounded-full transition-all cursor-pointer whitespace-nowrap shadow-lg shadow-violet-900/30 inline-block"
               >
                 {/* Fast Automatic Shimmer */}
@@ -77,7 +76,7 @@ export default function BookCallCTA() {
                 >
                   Send Us Message
                 </motion.span>
-              </Link>
+              </a>
             </motion.div>
           </div>
         </motion.div>

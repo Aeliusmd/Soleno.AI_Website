@@ -63,8 +63,8 @@ export default function ContactInfoCards() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-20 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section id="contact-info" ref={sectionRef} className="py-20 px-6 bg-white">
+      <div className="max-w-7xl mx-auto"> 
         <div className="grid md:grid-cols-3 gap-6">
           {contactInfo.map((item, index) => (
             <div

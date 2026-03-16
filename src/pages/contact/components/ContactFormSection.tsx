@@ -81,6 +81,7 @@ export default function ContactFormSection() {
 
   return (
     <section
+      id="contact-form"
       ref={sectionRef}
       className="py-20 px-6 bg-gradient-to-b from-white via-violet-50/30 to-white"
     >

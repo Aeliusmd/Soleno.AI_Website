@@ -77,7 +77,7 @@ export default function ContactHero() {
               </motion.a>
 
               <motion.a
-                href="#book-call"
+                href="#contact-info"
                 whileHover={{ backgroundColor: "rgba(255, 255, 255, 0.1)", scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-3.5 border-2 border-white/30 text-white text-sm font-bold rounded-full transition-all cursor-pointer whitespace-nowrap"

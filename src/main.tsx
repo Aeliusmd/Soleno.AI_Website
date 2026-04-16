@@ -5,10 +5,20 @@ import './index.css'
 import App from './App.tsx'
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
 
-createRoot(document.getElementById('root')!).render(
+const recaptchaSiteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY
+
+const appTree = (
   <StrictMode>
-    <GoogleReCaptchaProvider reCaptchaKey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}>
-      <App />
+    <App />
+  </StrictMode>
+)
+
+createRoot(document.getElementById('root')!).render(
+  recaptchaSiteKey ? (
+    <GoogleReCaptchaProvider reCaptchaKey={recaptchaSiteKey}>
+      {appTree}
     </GoogleReCaptchaProvider>
-  </StrictMode>,
+  ) : (
+    appTree
+  ),
 )

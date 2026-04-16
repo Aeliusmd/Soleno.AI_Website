@@ -5,7 +5,7 @@ const contactInfo = [
   {
     icon: 'ri-map-pin-line',
     title: 'Our Address',
-    description: '527 E Rowland St, Suite 100A, Covina, CA 91723, United States',
+    description: 'Marino Mall, 6th floor, 590 Galle Rd, Colombo',
     link: null,
     gradient: 'from-violet-500 to-purple-600',
     bgGradient: 'from-violet-50 to-purple-50',
@@ -14,7 +14,7 @@ const contactInfo = [
     icon: 'ri-phone-line',
     title: 'Contact Info',
     description: 'Open a chat or give us call at',
-    link: { text: '(626)788-0488', href: 'tel:6267880488' },
+    link: { text: '+94 117 682 653', href: 'tel:+94117682653' },
     gradient: 'from-amber-400 to-orange-500',
     bgGradient: 'from-amber-50 to-orange-50',
   },
@@ -22,7 +22,7 @@ const contactInfo = [
     icon: 'ri-mail-send-line',
     title: 'Reach Us by Email',
     description: 'Send us an email at',
-    link: { text: 'medcube@email.cm', href: 'mailto:medcube@email.cm' },
+    link: { text: 'kanishka@medcubeusa.com', href: 'mailto:kanishka@medcubeusa.com' },
     gradient: 'from-cyan-400 to-teal-500',
     bgGradient: 'from-cyan-50 to-teal-50',
   },
@@ -31,6 +31,7 @@ const contactInfo = [
 export default function ContactInfoCards() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const delayClasses = ['delay-0', 'delay-150', 'delay-300'];
 
   useEffect(() => {
     // Guard against environments where IntersectionObserver is not available
@@ -71,8 +72,7 @@ export default function ContactInfoCards() {
               key={index}
               className={`group relative bg-white rounded-2xl p-8 border border-neutral-200 hover:border-transparent hover:shadow-xl hover:shadow-violet-500/10 transition-all duration-500 text-center overflow-hidden cursor-pointer ${
                 visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
+              } ${delayClasses[index] ?? 'delay-0'}`}
             >
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${item.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}

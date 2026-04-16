@@ -2,10 +2,18 @@
     "version": 2,
     "buildCommand": "npm run build",
     "outputDirectory": "out",
-    "rewrites": [
+    "routes": [
         {
-            "source": "/((?!api/).*)",
-            "destination": "/index.html"
+            "src": "/api/contact",
+            "dest": "/api/contact.js"
+        },
+        {
+            "src": "/api/(.*)",
+            "dest": "/api/$1.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/index.html"
         }
     ]
 }

@@ -19,16 +19,14 @@ export default function ServicesCTA() {
     setSubmitStatus('idle');
 
     try {
-      const body = new URLSearchParams();
-      body.append('name', formData.name);
-      body.append('email', formData.email);
-      body.append('service', formData.service);
-      body.append('message', formData.message);
-
-      const response = await fetch('https://readdy.ai/api/form/d6dsh2uqd308q1a0a8u0', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body.toString(),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
       });
 
       if (response.ok) {
@@ -37,14 +35,10 @@ export default function ServicesCTA() {
       } else {
         setSubmitStatus('error');
       }
-            const response = await fetch('/api/contact', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                name: formData.name,
-                email: formData.email,
-                message: formData.message,
-              }),
+    } catch {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 

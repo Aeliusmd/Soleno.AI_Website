@@ -97,14 +97,26 @@ export default function ContactFormSection() {
             className={`transition-all duration-700 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
               }`}
           >
-            <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-lg shadow-violet-500/5 h-[520px]">
+            <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-lg shadow-violet-500/5 h-[520px] bg-neutral-100 flex flex-col">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233667.8223908687!2d90.27923710646988!3d23.78088745708454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka%2C%20Bangladesh!5e0!3m2!1sen!2s!4v1644587989646!5m2!1sen!2s"
-                className="w-full h-full border-0"
+                src="https://www.google.com/maps?q=MedCube+USA+LLC&output=embed"
+                className="w-full flex-1 border-0"
                 allowFullScreen
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Our Location"
               ></iframe>
+              <div className="border-t border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-600">
+                <p className="font-semibold text-neutral-900">Our Location</p>
+                <p>Marino Mall, 6th floor, 590 Galle Rd, Colombo</p>
+                <a
+                  href="https://www.google.com/maps?q=MedCube+USA+LLC"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-1 inline-block font-semibold text-violet-600 hover:text-violet-700"
+                >
+                  Open in Google Maps
+                </a>
+              </div>
             </div>
           </div>
 

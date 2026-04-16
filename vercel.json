@@ -1,23 +1,8 @@
 {
     "version": 2,
-    "builds": [
-        {
-            "src": "api/**/*.js",
-            "use": "@vercel/node"
-        },
-        {
-            "src": "package.json",
-            "use": "@vercel/static-build",
-            "config": {
-                "distDir": "out"
-            }
-        }
-    ],
+    "buildCommand": "npm run build",
+    "outputDirectory": "out",
     "rewrites": [
-        {
-            "source": "/api/contact",
-            "destination": "/api/contact.js"
-        },
         {
             "source": "/((?!api/).*)",
             "destination": "/index.html"

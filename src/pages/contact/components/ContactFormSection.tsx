@@ -9,6 +9,10 @@ export default function ContactFormSection() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'captcha'>('idle');
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const apiBaseUrl = import.meta.env.VITE_API_URL?.replace(/\/$/, '') || 'http://localhost:5000';
+  const contactEndpoint = import.meta.env.DEV
+    ? `${apiBaseUrl}/contact`
+    : '/api/contact';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,7 +53,7 @@ export default function ContactFormSection() {
       // Get reCAPTCHA v3 token silently
       const recaptchaToken = await executeRecaptcha('contact_form');
 
-      const response = await fetch('/api/contact', {
+      const response = await fetch(contactEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -64,7 +68,8 @@ export default function ContactFormSection() {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' });
       } else {
-        const data = await response.json();
+        const contentType = response.headers.get('content-type') || '';
+        const data = contentType.includes('application/json') ? await response.json() : null;
         if (data?.error?.toLowerCase().includes('recaptcha')) {
           setSubmitStatus('captcha');
         } else {
@@ -118,7 +123,6 @@ export default function ContactFormSection() {
 
             <form
               onSubmit={handleSubmit}
-              data-readdy-form
               id="contact-page-form"
               className="space-y-5"
             >

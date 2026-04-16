@@ -5,7 +5,7 @@ const contactInfo = [
   {
     icon: 'ri-map-pin-line',
     title: 'Our Address',
-    description: 'Marino Mall, 6th floor, 590 Galle Rd, Colombo',
+    description: '527 E Rowland St STE 100A, Covina, CA 91723, United States.',
     link: null,
     gradient: 'from-violet-500 to-purple-600',
     bgGradient: 'from-violet-50 to-purple-50',

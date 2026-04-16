@@ -99,7 +99,7 @@ export default function ContactFormSection() {
           >
             <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-lg shadow-violet-500/5 h-[520px] bg-neutral-100 flex flex-col">
               <iframe
-                src="https://www.google.com/maps?q=MedCube+USA+LLC&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.456789012345!2d-117.914444!3d34.098765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c32855b165690b:0xd4be0ad074a93395!2s527+E+Rowland+St+STE+100A,+Covina,+CA+91723,+USA!5e0!3m2!1sen!2sus!4v1678901234567!5m2!1sen!2sus"
                 className="w-full flex-1 border-0"
                 allowFullScreen
                 referrerPolicy="no-referrer-when-downgrade"
@@ -107,9 +107,9 @@ export default function ContactFormSection() {
               ></iframe>
               <div className="border-t border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-600">
                 <p className="font-semibold text-neutral-900">Our Location</p>
-                <p>Marino Mall, 6th floor, 590 Galle Rd, Colombo</p>
+                <p>527 E Rowland St STE 100A, Covina, CA 91723, United States</p>
                 <a
-                  href="https://www.google.com/maps?q=MedCube+USA+LLC"
+                  href="google.com/maps/place/527+E+Rowland+St+STE+100A,+Covina,+CA+91723,+USA/data=!4m2!3m1!1s0x80c32855b165690b:0xd4be0ad074a93395?sa=X&ved=1t:242&ictx=111"
                   target="_blank"
                   rel="noreferrer noopener"
                   className="mt-1 inline-block font-semibold text-violet-600 hover:text-violet-700"
@@ -146,7 +146,7 @@ export default function ContactFormSection() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Rashed Kabir"
+                  placeholder="Your Name"
                   className="w-full px-5 py-3.5 bg-white border border-neutral-300 rounded-xl text-sm text-neutral-900 placeholder-neutral-400 outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/10 transition-all"
                   required
                 />
@@ -161,7 +161,7 @@ export default function ContactFormSection() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="rshdkabir@gmail.com"
+                  placeholder="Your Email"
                   className="w-full px-5 py-3.5 bg-white border border-neutral-300 rounded-xl text-sm text-neutral-900 placeholder-neutral-400 outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/10 transition-all"
                   required
                 />
@@ -175,7 +175,7 @@ export default function ContactFormSection() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Your message*"
+                  placeholder="Your message"
                   maxLength={500}
                   rows={5}
                   className="w-full px-5 py-3.5 bg-white border border-neutral-300 rounded-xl text-sm text-neutral-900 placeholder-neutral-400 outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/10 transition-all resize-none"

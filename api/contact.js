@@ -163,8 +163,27 @@ export default async function handler(req, res) {
         `,
         };
 
+                const userMailOptions = {
+                        from: `"${fromName}" <${fromEmail}>`,
+                        to: email,
+                        subject: 'We received your message - Soleno.AI',
+                        html: `
+                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                        <h2 style="color: #111827;">Thanks for contacting Soleno.AI</h2>
+                        <p>Hi ${safeName},</p>
+                        <p>We received your message and our team will get back to you soon.</p>
+                        <div style="background:#f9fafb; padding:16px; border-radius:8px; border:1px solid #e5e7eb;">
+                            <p style="margin:0 0 8px 0;"><strong>Your message:</strong></p>
+                            <p style="margin:0; color:#374151;">${safeMessage}</p>
+                        </div>
+                        <p style="margin-top:20px;">Best regards,<br />Soleno.AI Team</p>
+                    </div>
+                `,
+                };
+
                 await transporter.sendMail(adminMailOptions);
-                console.log(`✅ Admin email sent for ${name} (${email})`);
+                await transporter.sendMail(userMailOptions);
+                console.log(`✅ Admin + confirmation emails sent for ${name} (${email})`);
         return res.status(200).json({ message: 'Email sent successfully!' });
 
     } catch (globalError) {

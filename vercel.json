@@ -15,11 +15,7 @@
     ],
     "rewrites": [
         {
-            "source": "/api/contact",
-            "destination": "/api/contact.js"
-        },
-        {
-            "source": "/(.*)",
+            "source": "/((?!api/).*)",
             "destination": "/index.html"
         }
     ]

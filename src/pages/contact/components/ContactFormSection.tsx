@@ -111,7 +111,7 @@ export default function ContactFormSection() {
                 <a
                   href="https://www.google.com/maps?q=MedCube+USA+LLC"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noreferrer noopener"
                   className="mt-1 inline-block font-semibold text-violet-600 hover:text-violet-700"
                 >
                   Open in Google Maps

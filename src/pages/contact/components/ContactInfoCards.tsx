@@ -14,7 +14,7 @@ const contactInfo = [
     icon: 'ri-phone-line',
     title: 'Contact Info',
     description: 'Open a chat or give us call at',
-    link: { text: '(626)788-0488', href: 'tel:6267880488' },
+    link: { text: '+94 117 682 653', href: 'tel:+94117682653' },
     gradient: 'from-amber-400 to-orange-500',
     bgGradient: 'from-amber-50 to-orange-50',
   },

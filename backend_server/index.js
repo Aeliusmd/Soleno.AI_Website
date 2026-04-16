@@ -141,8 +141,10 @@ app.post('/contact', async (req, res) => {
       }
     );
     const { success, score } = verifyRes.data;
-    console.log(`🤖 reCAPTCHA — success: ${success}, score: ${score}`);
-    if (!success || score < 0.5) {
+    const configuredMinScore = Number(process.env.RECAPTCHA_MIN_SCORE ?? '0.3');
+    const minScore = Number.isFinite(configuredMinScore) ? configuredMinScore : 0.3;
+    console.log(`🤖 reCAPTCHA — success: ${success}, score: ${score}, minScore: ${minScore}`);
+    if (!success || score < minScore) {
       return res.status(400).json({ error: 'reCAPTCHA failed. Possible bot detected.' });
     }
   } catch (err) {

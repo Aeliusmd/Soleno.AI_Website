@@ -37,10 +37,14 @@ export default function ServicesCTA() {
       } else {
         setSubmitStatus('error');
       }
-    } catch {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
+            const response = await fetch('/api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                name: formData.name,
+                email: formData.email,
+                message: formData.message,
+              }),
     }
   };
 
@@ -85,7 +89,7 @@ export default function ServicesCTA() {
 
           <div className="bg-neutral-800/50 backdrop-blur-sm rounded-3xl p-8 border border-neutral-700">
             <h3 className="text-xl font-bold text-white mb-6">Get a Free Quote</h3>
-            <form onSubmit={handleSubmit} data-readdy-form id="services-inquiry-form" className="space-y-5">
+            <form onSubmit={handleSubmit} id="services-inquiry-form" className="space-y-5">
               <div>
                 <label className="block text-sm text-neutral-400 mb-2">Your Name</label>
                 <input

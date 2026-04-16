@@ -28,13 +28,14 @@ export default function ContactCTA() {
       body.append('email', formData.email);
       body.append('message', formData.message);
 
-      const response = await fetch(
-        'https://readdy.ai/api/form/d6c3hiaff40lgbk6cnlg',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: body.toString(),
-        }
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
       );
 
       if (response.ok) {
@@ -117,7 +118,6 @@ export default function ContactCTA() {
             {/* Added explicit boolean value to custom data attribute to satisfy JSX parser */}
             <form
               onSubmit={handleSubmit}
-              data-readdy-form={true}
               id="about-contact-form"
               className="space-y-5"
             >

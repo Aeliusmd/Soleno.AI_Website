@@ -1,10 +1,12 @@
 
 import { useState } from 'react';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 export default function ContactCTA() {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'captcha'>('idle');
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -19,14 +21,16 @@ export default function ContactCTA() {
     if (!formData.name || !formData.email || !formData.message) return;
     if (formData.message.length > 500) return;
 
+    if (!executeRecaptcha) {
+      setSubmitStatus('captcha');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
-      const body = new URLSearchParams();
-      body.append('name', formData.name);
-      body.append('email', formData.email);
-      body.append('message', formData.message);
+      const recaptchaToken = await executeRecaptcha('about_contact_form');
 
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -35,6 +39,7 @@ export default function ContactCTA() {
           name: formData.name,
           email: formData.email,
           message: formData.message,
+          recaptchaToken,
         }),
       );
 
@@ -187,6 +192,14 @@ export default function ContactCTA() {
                   <i className="ri-error-warning-line text-red-300"></i>
                   <span className="text-sm text-red-300">
                     Something went wrong. Please try again.
+                  </span>
+                </div>
+              )}
+              {submitStatus === 'captcha' && (
+                <div className="flex items-center gap-2 p-3 bg-amber-500/20 border border-amber-400/30 rounded-xl">
+                  <i className="ri-shield-flash-line text-amber-300"></i>
+                  <span className="text-sm text-amber-300">
+                    Security check failed. Please refresh and try again.
                   </span>
                 </div>
               )}

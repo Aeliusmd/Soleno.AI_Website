@@ -109,9 +109,11 @@ export default function ServicesCTA() {
                 />
               </div>
               <div>
-                <label className="block text-sm text-neutral-400 mb-2">Service Interested In</label>
+                <label htmlFor="service" className="block text-sm text-neutral-400 mb-2">Service Interested In</label>
                 <select
+                  id="service"
                   name="service"
+                  title="Service Interested In"
                   value={formData.service}
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-neutral-700/50 border border-neutral-600 rounded-xl text-white text-sm outline-none focus:border-violet-500 transition-colors cursor-pointer appearance-none"
